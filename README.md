@@ -26,6 +26,7 @@ Lockwood Immersive - [www.lockwoodimmersive.com](https://www.lockwoodimmersive.c
 Hand Eye Society - [www.handeyesociety.com](https://www.handeyesociety.com/) - info@handeyesociety.com
 <br/><br/>
 Magic Mirror Backend - [github.com/thana-than/LockwoodImmersiveMagicMirror](https://github.com/thana-than/LockwoodImmersiveMagicMirror)
+<br/>
 External Renderer - [github.com/thana-than/LockwoodImmersiveMagicMirrorRenderer](https://github.com/thana-than/LockwoodImmersiveMagicMirrorRenderer)
 
 ## License
