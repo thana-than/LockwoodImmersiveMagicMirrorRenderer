@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkk0x08de4vd5"]
+
+[ext_resource type="Script" uid="uid://coac7wnqritpt" path="res://scripts/udp_listener.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://d12a8xmxccs6g" path="res://scripts/candle_player/candle_manager.gd" id="2_7mycd"]
+[ext_resource type="Script" uid="uid://c1cjhvgjliqpx" path="res://scripts/candle_player/candle_resource.gd" id="3_272bh"]
+[ext_resource type="Resource" uid="uid://b1d11lp167vg8" path="res://resources/candles/candle_0.tres" id="4_5vw27"]
+[ext_resource type="Resource" uid="uid://bkkq2xvrqi8lb" path="res://resources/candles/candle_1.tres" id="5_kek77"]
+[ext_resource type="Resource" uid="uid://bpyw6bmpw6k50" path="res://resources/candles/candle_2.tres" id="6_4c57u"]
+[ext_resource type="Script" uid="uid://ohna5hvxqo5q" path="res://scripts/candle_player/state_hook.gd" id="7_272bh"]
+
+[sub_resource type="Environment" id="Environment_ig7tw"]
+background_mode = 1
+ambient_light_energy = 0.0
+glow_enabled = true
+glow_strength = 0.86
+glow_hdr_threshold = 1.1
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ig7tw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.11112208, 0.9938068, 0, -0.9938068, 0.11112208, 0, 0, 2.4301662)
+light_energy = 0.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Candles" type="Node3D" parent="."]
+
+[node name="CandleClient" type="Node" parent="Candles"]
+script = ExtResource("1_ig7tw")
+metadata/_custom_type_script = "uid://coac7wnqritpt"
+
+[node name="CandleManager" type="Node3D" parent="Candles"]
+script = ExtResource("2_7mycd")
+candle_settings = Array[ExtResource("3_272bh")]([ExtResource("4_5vw27"), ExtResource("5_kek77"), ExtResource("6_4c57u")])
+
+[node name="StateHandler" type="Node3D" parent="Candles"]
+script = ExtResource("7_272bh")
+
+[node name="CorrectLabel" type="Label3D" parent="Candles/StateHandler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25911683, 1.273623)
+visible = false
+text = "VISAGE"
+width = 501.04
+
+[node name="IncorrectLabel" type="Label3D" parent="Candles/StateHandler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25911683, 1.273623)
+visible = false
+modulate = Color(1, 0, 0, 1)
+text = "INCORRECT"
+width = 501.04
+
+[connection signal="on_correct" from="Candles/StateHandler" to="Candles/StateHandler/CorrectLabel" method="show"]
+[connection signal="on_incorrect" from="Candles/StateHandler" to="Candles/StateHandler/IncorrectLabel" method="show"]
+[connection signal="on_reset" from="Candles/StateHandler" to="Candles/StateHandler/CorrectLabel" method="hide"]
+[connection signal="on_reset" from="Candles/StateHandler" to="Candles/StateHandler/IncorrectLabel" method="hide"]

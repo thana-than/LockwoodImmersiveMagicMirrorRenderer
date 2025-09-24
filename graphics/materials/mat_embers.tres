@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cblr5x3reeg7t"]
+
+[ext_resource type="Shader" uid="uid://bp5kirty3ygl7" path="res://graphics/shaders/shader_flame_particle.tres" id="1_4yqhl"]
+
+[sub_resource type="Gradient" id="Gradient_yyjcl"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4yqhl"]
+gradient = SubResource("Gradient_yyjcl")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7991453, 0.22222222)
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4yqhl")
+shader_parameter/Color = Color(0.98173976, 0.53561604, 2.4275684e-07, 1)
+shader_parameter/Texture = SubResource("GradientTexture2D_4yqhl")
+shader_parameter/scroll_speed = Vector2(0, 0.1)
+shader_parameter/DissolveScale = 3.0
+shader_parameter/Emissive = 10.0

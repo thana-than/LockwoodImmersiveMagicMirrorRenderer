@@ -1,0 +1,27 @@
+# Godot 4+ specific ignores
+.godot/
+.nomedia
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+
+/[Bb]uilds/*
+/[Ww]orkspace/*
+/[Ll]ocal/*
+
+/StreamingAssets/*
+!/StreamingAssets/.gdignore
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+/android/
+
+# Working
+working*.tscn

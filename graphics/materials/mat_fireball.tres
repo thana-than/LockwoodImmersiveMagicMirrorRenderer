@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dyvylm765rp28"]
+
+[ext_resource type="Shader" uid="uid://bp5kirty3ygl7" path="res://graphics/shaders/shader_flame_particle.tres" id="1_pjr8v"]
+[ext_resource type="Texture2D" uid="uid://h5wa513wrgmg" path="res://graphics/textures/particles/tex_fire_0.png" id="2_nj8ku"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_pjr8v")
+shader_parameter/Color = Color(0.98173976, 0.53561604, 2.4275684e-07, 1)
+shader_parameter/Texture = ExtResource("2_nj8ku")
+shader_parameter/scroll_speed = Vector2(0, 0.2)
+shader_parameter/DissolveScale = 5.0
+shader_parameter/Emissive = 10.0

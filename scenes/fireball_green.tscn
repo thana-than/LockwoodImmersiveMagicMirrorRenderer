@@ -1,0 +1,89 @@
+[gd_scene load_steps=15 format=3 uid="uid://bdwv15d8y5pd7"]
+
+[ext_resource type="PackedScene" uid="uid://cm0k6jqdhyevc" path="res://scenes/fireball_base.tscn" id="1_gs2jn"]
+[ext_resource type="Shader" uid="uid://17ilm6m7cvof" path="res://graphics/shaders/shader_smoke_particle.tres" id="2_xyvcb"]
+[ext_resource type="Texture2D" uid="uid://h5wa513wrgmg" path="res://graphics/textures/particles/tex_fire_0.png" id="3_cwvkx"]
+[ext_resource type="Shader" uid="uid://bp5kirty3ygl7" path="res://graphics/shaders/shader_flame_particle.tres" id="4_uqh0u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gs2jn"]
+render_priority = 0
+shader = ExtResource("2_xyvcb")
+shader_parameter/Color = Color(0.43207583, 1.3528494, 0.57019174, 1)
+shader_parameter/Texture = ExtResource("3_cwvkx")
+shader_parameter/scroll_speed = Vector2(0, 0.2)
+shader_parameter/DissolveScale = 5.0
+shader_parameter/Emission = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_xyvcb"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_gs2jn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwvkx"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_uqh0u")
+shader_parameter/Color = Color(0.43207583, 1.3528494, 0.57019174, 1)
+shader_parameter/Texture = ExtResource("3_cwvkx")
+shader_parameter/scroll_speed = Vector2(0, 0.2)
+shader_parameter/DissolveScale = 5.0
+shader_parameter/Emissive = 10.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_uqh0u"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_cwvkx")
+
+[sub_resource type="Gradient" id="Gradient_88phv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_42lcv"]
+gradient = SubResource("Gradient_88phv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7991453, 0.22222222)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p6k4p"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_uqh0u")
+shader_parameter/Color = Color(0.43207583, 1.3528494, 0.57019174, 1)
+shader_parameter/Texture = SubResource("GradientTexture2D_42lcv")
+shader_parameter/scroll_speed = Vector2(0, 0.1)
+shader_parameter/DissolveScale = 3.0
+shader_parameter/Emissive = 10.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_0lfcs"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_p6k4p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_745mf"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_uqh0u")
+shader_parameter/Color = Color(0.43207583, 1.3528494, 0.57019174, 1)
+shader_parameter/Texture = ExtResource("3_cwvkx")
+shader_parameter/scroll_speed = Vector2(0, 0.2)
+shader_parameter/DissolveScale = 5.0
+shader_parameter/Emissive = 10.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_sc2nl"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_745mf")
+
+[node name="GreenFireball" instance=ExtResource("1_gs2jn")]
+flame_color = Color(0.43207583, 1.3528494, 0.57019174, 1)
+light_color = Color(0, 1.3528494, 0.39649037, 1)
+
+[node name="Smoke" parent="Particles" index="0"]
+draw_pass_1 = SubResource("QuadMesh_xyvcb")
+
+[node name="Fire" parent="Particles" index="1"]
+draw_pass_1 = SubResource("QuadMesh_uqh0u")
+
+[node name="Embers" parent="Particles" index="2"]
+draw_pass_1 = SubResource("QuadMesh_0lfcs")
+
+[node name="Burst" parent="Particles" index="3"]
+draw_pass_1 = SubResource("QuadMesh_sc2nl")
+
+[node name="Light" parent="Lights" index="0"]
+light_color = Color(0, 1.3528494, 0.39649037, 1)

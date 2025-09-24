@@ -1,0 +1,49 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=9 format=3 uid="uid://di046e1lt6p1v"]
+
+[sub_resource type="Curve" id="Curve_2nayq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0892857, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0000007, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4gbkl"]
+curve = SubResource("Curve_2nayq")
+
+[sub_resource type="Gradient" id="Gradient_2nayq"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4gbkl"]
+gradient = SubResource("Gradient_2nayq")
+
+[sub_resource type="Curve" id="Curve_tff2c"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.53794646, 1), 0.6837604, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_58lrc"]
+curve = SubResource("Curve_tff2c")
+
+[sub_resource type="Curve" id="Curve_4gbkl"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.031250004, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2197802), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tff2c"]
+curve = SubResource("Curve_4gbkl")
+
+[resource]
+angle_min = -360.0
+angle_max = 360.00003
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = -1.0
+initial_velocity_max = 1.0
+angular_velocity_min = -45.000015
+angular_velocity_max = 44.999985
+gravity = Vector3(0, 9.8, 0)
+damping_min = 8.0
+damping_max = 10.0
+damping_curve = SubResource("CurveTexture_58lrc")
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_tff2c")
+color = Color(0.11, 0.11, 0.11, 0.41960785)
+color_ramp = SubResource("GradientTexture1D_4gbkl")
+alpha_curve = SubResource("CurveTexture_4gbkl")
+turbulence_enabled = true
+turbulence_noise_strength = 2.0

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CandleSetting" load_steps=3 format=3 uid="uid://b1d11lp167vg8"]
+
+[ext_resource type="PackedScene" uid="uid://bqfeo5n2xv4y4" path="res://scenes/fireball_blue.tscn" id="1_7d14t"]
+[ext_resource type="Script" uid="uid://c1cjhvgjliqpx" path="res://scripts/candle_player/candle_resource.gd" id="2_5vi5m"]
+
+[resource]
+script = ExtResource("2_5vi5m")
+prefab = ExtResource("1_7d14t")
+metadata/_custom_type_script = "uid://c1cjhvgjliqpx"
