@@ -36,3 +36,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Acknowledgments
 
 * [Godot Engine](https://godotengine.org/)
+* [Kings Font](https://fonts.google.com/specimen/Kings)
