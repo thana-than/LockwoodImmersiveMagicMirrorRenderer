@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bdwv15d8y5pd7"]
 
-[ext_resource type="PackedScene" uid="uid://cm0k6jqdhyevc" path="res://scenes/fireball_base.tscn" id="1_gs2jn"]
+[ext_resource type="PackedScene" uid="uid://cm0k6jqdhyevc" path="res://scenes/fireball/fireball_base.tscn" id="1_gs2jn"]
 [ext_resource type="Shader" uid="uid://17ilm6m7cvof" path="res://graphics/shaders/shader_smoke_particle.tres" id="2_xyvcb"]
 [ext_resource type="Texture2D" uid="uid://h5wa513wrgmg" path="res://graphics/textures/particles/tex_fire_0.png" id="3_cwvkx"]
 [ext_resource type="Shader" uid="uid://bp5kirty3ygl7" path="res://graphics/shaders/shader_flame_particle.tres" id="4_uqh0u"]
@@ -83,6 +83,7 @@ draw_pass_1 = SubResource("QuadMesh_uqh0u")
 draw_pass_1 = SubResource("QuadMesh_0lfcs")
 
 [node name="Burst" parent="Particles" index="3"]
+emitting = true
 draw_pass_1 = SubResource("QuadMesh_sc2nl")
 
 [node name="Light" parent="Lights" index="0"]

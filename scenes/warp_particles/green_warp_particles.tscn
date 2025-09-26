@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://be3frtw88fsdn"]
+
+[ext_resource type="PackedScene" uid="uid://bn7gm6bidfmfk" path="res://scenes/warp_particles/blue_warp_particles.tscn" id="1_1jm4v"]
+
+[sub_resource type="Curve" id="Curve_kek77"]
+_data = [Vector2(0, 0), 0.0, 3.6434708, 0, 0, Vector2(0.50416666, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.196459, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqp7n"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 1.0729398, 0.17659456, 1)
+grow_amount = 0.266
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_280xn"]
+material = SubResource("StandardMaterial3D_vqp7n")
+radius = 0.01
+section_length = 0.5
+curve = SubResource("Curve_kek77")
+
+[node name="GreenWarpParticles" instance=ExtResource("1_1jm4v")]
+draw_pass_1 = SubResource("TubeTrailMesh_280xn")

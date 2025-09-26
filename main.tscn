@@ -1,19 +1,135 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkk0x08de4vd5"]
+[gd_scene load_steps=17 format=3 uid="uid://bkk0x08de4vd5"]
 
+[ext_resource type="Script" uid="uid://cdw8lcn3sfq1q" path="res://scripts/warp_particles_controller.gd" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://coac7wnqritpt" path="res://scripts/udp_listener.gd" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://d12a8xmxccs6g" path="res://scripts/candle_player/candle_manager.gd" id="2_7mycd"]
-[ext_resource type="Script" uid="uid://c1cjhvgjliqpx" path="res://scripts/candle_player/candle_resource.gd" id="3_272bh"]
-[ext_resource type="Resource" uid="uid://b1d11lp167vg8" path="res://resources/candles/candle_0.tres" id="4_5vw27"]
-[ext_resource type="Resource" uid="uid://bkkq2xvrqi8lb" path="res://resources/candles/candle_1.tres" id="5_kek77"]
-[ext_resource type="Resource" uid="uid://bpyw6bmpw6k50" path="res://resources/candles/candle_2.tres" id="6_4c57u"]
+[ext_resource type="Script" uid="uid://d12a8xmxccs6g" path="res://scripts/candle_player/candle_controller.gd" id="2_7mycd"]
+[ext_resource type="FontFile" uid="uid://bdok648rxtxus" path="res://graphics/fonts/Kings-Regular.ttf" id="4_lquwl"]
 [ext_resource type="Script" uid="uid://ohna5hvxqo5q" path="res://scripts/candle_player/state_hook.gd" id="7_272bh"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 background_mode = 1
+background_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.0
 glow_enabled = true
-glow_strength = 0.86
+glow_strength = 0.58
+glow_bloom = 0.5
+glow_blend_mode = 1
 glow_hdr_threshold = 1.1
+
+[sub_resource type="Animation" id="Animation_5vw27"]
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StateAnimations/Black")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(1, 1, 300, 300, 300)
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateAnimations/Red:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateAnimations/IncorrectLabel:transparency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1)
+}
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StateAnimations/CandleController")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_272bh"]
+resource_name = "correct"
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StateAnimations/Black")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 300, 300, 300, 1, 1, 0, 0, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateAnimations/CandleController")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.6333333, 1, 0, -1, 0)
+
+[sub_resource type="Animation" id="Animation_kek77"]
+resource_name = "incorrect"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StateAnimations/Red:transparency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0, 1, -0.061111115, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.26666668, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateAnimations/IncorrectLabel:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, 0, 0, 0.03333334, 0.16666667, 1, -0.25, 0, 0.25, 0, 0, -0.03333333, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kek77"]
+_data = {
+&"RESET": SubResource("Animation_5vw27"),
+&"correct": SubResource("Animation_272bh"),
+&"incorrect": SubResource("Animation_kek77")
+}
+
+[sub_resource type="Gradient" id="Gradient_272bh"]
+offsets = PackedFloat32Array(0.5, 0.501)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5vw27"]
+gradient = SubResource("Gradient_272bh")
+width = 4320
+height = 4320
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+albedo_texture = SubResource("GradientTexture2D_5vw27")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5vw27"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.8069782, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dg77c"]
+flip_faces = true
 
 [node name="Main" type="Node3D"]
 
@@ -26,6 +142,10 @@ light_energy = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+fov = 110.0
+
+[node name="WarpParticlesController" type="Node3D" parent="Camera3D"]
+script = ExtResource("1_1bvp3")
 
 [node name="Candles" type="Node3D" parent="."]
 
@@ -33,27 +153,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("1_ig7tw")
 metadata/_custom_type_script = "uid://coac7wnqritpt"
 
-[node name="CandleManager" type="Node3D" parent="Candles"]
-script = ExtResource("2_7mycd")
-candle_settings = Array[ExtResource("3_272bh")]([ExtResource("4_5vw27"), ExtResource("5_kek77"), ExtResource("6_4c57u")])
-
 [node name="StateHandler" type="Node3D" parent="Candles"]
 script = ExtResource("7_272bh")
 
-[node name="CorrectLabel" type="Label3D" parent="Candles/StateHandler"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25911683, 1.273623)
-visible = false
+[node name="StateAnimations" type="AnimationPlayer" parent="Candles/StateHandler"]
+libraries = {
+&"": SubResource("AnimationLibrary_kek77")
+}
+blend_times = [&"RESET", &"RESET", 1.0]
+
+[node name="CandleController" type="Node3D" parent="Candles/StateHandler/StateAnimations"]
+script = ExtResource("2_7mycd")
+spacing = Vector3(0.66, 0, 0)
+
+[node name="Black" type="MeshInstance3D" parent="Candles/StateHandler/StateAnimations"]
+transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 0, 0, -30)
+material_override = SubResource("StandardMaterial3D_272bh")
+mesh = SubResource("QuadMesh_5vw27")
+
+[node name="Red" type="MeshInstance3D" parent="Candles/StateHandler/StateAnimations"]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_efxa6")
+transparency = 1.0
+mesh = SubResource("BoxMesh_dg77c")
+skeleton = NodePath("../Black")
+
+[node name="CorrectLabel" type="Label3D" parent="Candles/StateHandler/StateAnimations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -37.298)
+modulate = Color(0, 0, 0, 1)
 text = "VISAGE"
+font = ExtResource("4_lquwl")
+font_size = 3200
+outline_size = 0
 width = 501.04
 
-[node name="IncorrectLabel" type="Label3D" parent="Candles/StateHandler"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25911683, 1.273623)
-visible = false
-modulate = Color(1, 0, 0, 1)
+[node name="IncorrectLabel" type="Label3D" parent="Candles/StateHandler/StateAnimations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -29)
+transparency = 1.0
+modulate = Color(1.353256, 0, 0, 1)
 text = "INCORRECT"
-width = 501.04
+font = ExtResource("4_lquwl")
+font_size = 1000
+outline_size = 0
 
-[connection signal="on_correct" from="Candles/StateHandler" to="Candles/StateHandler/CorrectLabel" method="show"]
-[connection signal="on_incorrect" from="Candles/StateHandler" to="Candles/StateHandler/IncorrectLabel" method="show"]
-[connection signal="on_reset" from="Candles/StateHandler" to="Candles/StateHandler/CorrectLabel" method="hide"]
-[connection signal="on_reset" from="Candles/StateHandler" to="Candles/StateHandler/IncorrectLabel" method="hide"]
+[connection signal="on_correct" from="Candles/StateHandler" to="Candles/StateHandler/StateAnimations" method="play" binds= ["correct"]]
+[connection signal="on_incorrect" from="Candles/StateHandler" to="Candles/StateHandler/StateAnimations" method="play" binds= ["incorrect"]]
+[connection signal="on_reset" from="Candles/StateHandler" to="Candles/StateHandler/StateAnimations" method="play" binds= ["RESET", 1.0]]
