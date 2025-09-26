@@ -15,7 +15,12 @@
 <a href="https://github.com/thana-than/LockwoodImmersiveMagicMirror">Magic Mirror Backend</a> is required for proper functionality.
 
 ### Installation
-*Coming soon!*
+1. Download [LockwoodMagicMirrorRenderer.exe](https://github.com/thana-than/LockwoodImmersiveMagicMirrorRenderer/releases) from the latest release
+2. Run alongside the <a href="https://github.com/thana-than/LockwoodImmersiveMagicMirror">Magic Mirror Backend</a>
+
+## Usage
+- F11 - Toggle Fullscreen
+- Esc - Quit Application
 
 ## Contact
 
