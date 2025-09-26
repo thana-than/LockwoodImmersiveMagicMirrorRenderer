@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bkk0x08de4vd5"]
+[gd_scene load_steps=18 format=3 uid="uid://bkk0x08de4vd5"]
 
 [ext_resource type="Script" uid="uid://cdw8lcn3sfq1q" path="res://scripts/warp_particles_controller.gd" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://coac7wnqritpt" path="res://scripts/udp_listener.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://d12a8xmxccs6g" path="res://scripts/candle_player/candle_controller.gd" id="2_7mycd"]
 [ext_resource type="FontFile" uid="uid://bdok648rxtxus" path="res://graphics/fonts/Kings-Regular.ttf" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://byleb48t0k338" path="res://scenes/menu.tscn" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://ohna5hvxqo5q" path="res://scripts/candle_player/state_hook.gd" id="7_272bh"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
@@ -195,6 +196,8 @@ text = "INCORRECT"
 font = ExtResource("4_lquwl")
 font_size = 1000
 outline_size = 0
+
+[node name="Menu" parent="." instance=ExtResource("6_7mycd")]
 
 [connection signal="on_correct" from="Candles/StateHandler" to="Candles/StateHandler/StateAnimations" method="play" binds= ["correct"]]
 [connection signal="on_incorrect" from="Candles/StateHandler" to="Candles/StateHandler/StateAnimations" method="play" binds= ["incorrect"]]
