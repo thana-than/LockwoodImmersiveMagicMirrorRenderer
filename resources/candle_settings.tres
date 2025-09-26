@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CandleSettings" load_steps=6 format=3 uid="uid://bx6e7n2yh353s"]
+
+[ext_resource type="Script" uid="uid://c1cjhvgjliqpx" path="res://scripts/candle_player/candle_resource.gd" id="1_1als4"]
+[ext_resource type="Script" uid="uid://dtjetrskukpn2" path="res://scripts/candle_player/candle_settings.gd" id="1_nhv5m"]
+[ext_resource type="Resource" uid="uid://b1d11lp167vg8" path="res://resources/candles/candle_0.tres" id="2_8ulye"]
+[ext_resource type="Resource" uid="uid://bkkq2xvrqi8lb" path="res://resources/candles/candle_1.tres" id="3_2eo2l"]
+[ext_resource type="Resource" uid="uid://bpyw6bmpw6k50" path="res://resources/candles/candle_2.tres" id="4_4c4cd"]
+
+[resource]
+script = ExtResource("1_nhv5m")
+candle_settings = Array[ExtResource("1_1als4")]([ExtResource("2_8ulye"), ExtResource("3_2eo2l"), ExtResource("4_4c4cd")])
+metadata/_custom_type_script = "uid://dtjetrskukpn2"

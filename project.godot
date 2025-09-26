@@ -18,6 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 SequenceManager="*res://scripts/sequence.gd"
+CandleManager="*res://scripts/candle_manager.gd"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
 
 [dotnet]
 

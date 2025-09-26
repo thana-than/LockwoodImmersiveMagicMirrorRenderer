@@ -28,6 +28,7 @@ point_count = 3
 curve = SubResource("Curve_4gbkl")
 
 [resource]
+lifetime_randomness = 0.5
 angle_min = -360.0
 angle_max = 360.00003
 spread = 180.0
