@@ -37,3 +37,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 * [Godot Engine](https://godotengine.org/)
 * [Kings Font](https://fonts.google.com/specimen/Kings)
+* [Hamada Gasmallah](https://gasmallah.ca/) *(for some helpful Godot snipppets)*
