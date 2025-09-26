@@ -1,0 +1,49 @@
+name: "Release Game Version"
+on:
+  push:
+    tags:
+      - "v*"
+
+env:
+  GODOT_VERSION: 4.5
+  EXPORT_NAME: Lockwood Magic Mirror Renderer
+
+permissions:
+  contents: write
+
+jobs:
+  export-windows:
+    name: Windows Export
+    runs-on: ubuntu-22.04
+    container:
+      image: barichello/godot-ci:4.5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mkdir -v -p ~/.config
+          mv /root/.config/godot ~/.config/godot
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Windows Build
+        run: |
+          mkdir -v -p build/windows
+          godot --headless --verbose --export-release "Windows Desktop" "build/windows/$EXPORT_NAME.exe"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lockwood_magic_mirror_renderer.zip
+          path: build/windows
+          retention-days: 3
+
+      - name: Create Release & Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/windows/**
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
