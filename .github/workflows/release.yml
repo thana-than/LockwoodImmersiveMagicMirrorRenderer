@@ -6,7 +6,7 @@ on:
 
 env:
   GODOT_VERSION: 4.5
-  EXPORT_NAME: Lockwood Magic Mirror Renderer
+  EXPORT_NAME: LockwoodMagicMirrorRenderer
 
 permissions:
   contents: write
