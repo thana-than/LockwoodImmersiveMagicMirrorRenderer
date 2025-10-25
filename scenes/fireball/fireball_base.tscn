@@ -9,7 +9,7 @@
 [ext_resource type="Shader" uid="uid://bp5kirty3ygl7" path="res://graphics/shaders/shader_flame_particle.tres" id="6_4xown"]
 [ext_resource type="Material" uid="uid://c1rgm0sup6wm2" path="res://graphics/materials/p_mat_embers.tres" id="6_t8o03"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t8o03"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xaxv"]
 render_priority = 0
 shader = ExtResource("3_t8o03")
 shader_parameter/Color = Color(1.353256, 0.5964019, 0.51230687, 1)
@@ -18,11 +18,11 @@ shader_parameter/scroll_speed = Vector2(0, 0.2)
 shader_parameter/DissolveScale = 5.0
 shader_parameter/Emission = Color(0, 0, 0, 1)
 
-[sub_resource type="QuadMesh" id="QuadMesh_57bp6"]
+[sub_resource type="QuadMesh" id="QuadMesh_njuow"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_t8o03")
+material = SubResource("ShaderMaterial_2xaxv")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4xown"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_67rff"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("6_4xown")
@@ -32,32 +32,32 @@ shader_parameter/scroll_speed = Vector2(0, 0.2)
 shader_parameter/DissolveScale = 5.0
 shader_parameter/Emissive = 10.0
 
-[sub_resource type="QuadMesh" id="QuadMesh_orpm1"]
+[sub_resource type="QuadMesh" id="QuadMesh_fg0sy"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_4xown")
+material = SubResource("ShaderMaterial_67rff")
 
-[sub_resource type="Gradient" id="Gradient_gnjxk"]
+[sub_resource type="Gradient" id="Gradient_2ngao"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_m45bo"]
-gradient = SubResource("Gradient_gnjxk")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_25rp6"]
+gradient = SubResource("Gradient_2ngao")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.7991453, 0.22222222)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yuo7n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aba8q"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("6_4xown")
 shader_parameter/Color = Color(1.353256, 0.5964019, 0.51230687, 1)
-shader_parameter/Texture = SubResource("GradientTexture2D_m45bo")
+shader_parameter/Texture = SubResource("GradientTexture2D_25rp6")
 shader_parameter/scroll_speed = Vector2(0, 0.1)
 shader_parameter/DissolveScale = 3.0
 shader_parameter/Emissive = 10.0
 
-[sub_resource type="QuadMesh" id="QuadMesh_kf35g"]
+[sub_resource type="QuadMesh" id="QuadMesh_gr4nf"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_yuo7n")
+material = SubResource("ShaderMaterial_aba8q")
 
 [sub_resource type="Curve" id="Curve_2nayq"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0892857, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0000007, 0.0, 0, 0]
@@ -112,7 +112,7 @@ turbulence_enabled = true
 turbulence_noise_strength = 2.0
 turbulence_noise_scale = 2.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_02v63"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eudm1"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("6_4xown")
@@ -122,9 +122,9 @@ shader_parameter/scroll_speed = Vector2(0, 0.2)
 shader_parameter/DissolveScale = 5.0
 shader_parameter/Emissive = 10.0
 
-[sub_resource type="QuadMesh" id="QuadMesh_4qkyq"]
+[sub_resource type="QuadMesh" id="QuadMesh_ddxxf"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_02v63")
+material = SubResource("ShaderMaterial_eudm1")
 
 [node name="FireballBase" type="Node3D"]
 script = ExtResource("1_knwdy")
@@ -135,7 +135,7 @@ light_color = Color(1.353256, 0, 0, 1)
 
 [node name="Smoke" type="GPUParticles3D" parent="Particles"]
 process_material = ExtResource("1_58lrc")
-draw_pass_1 = SubResource("QuadMesh_57bp6")
+draw_pass_1 = SubResource("QuadMesh_njuow")
 
 [node name="Fire" type="GPUParticles3D" parent="Particles"]
 amount = 32
@@ -145,14 +145,14 @@ explosiveness = 0.13
 randomness = 1.0
 fixed_fps = 60
 process_material = ExtResource("3_fgpab")
-draw_pass_1 = SubResource("QuadMesh_orpm1")
+draw_pass_1 = SubResource("QuadMesh_fg0sy")
 
 [node name="Embers" type="GPUParticles3D" parent="Particles"]
 amount = 16
 explosiveness = 0.13
 randomness = 1.0
 process_material = ExtResource("6_t8o03")
-draw_pass_1 = SubResource("QuadMesh_kf35g")
+draw_pass_1 = SubResource("QuadMesh_gr4nf")
 
 [node name="Burst" type="GPUParticles3D" parent="Particles"]
 emitting = false
@@ -162,7 +162,7 @@ one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_58lrc")
-draw_pass_1 = SubResource("QuadMesh_4qkyq")
+draw_pass_1 = SubResource("QuadMesh_ddxxf")
 
 [node name="Lights" type="Node3D" parent="."]
 script = ExtResource("5_fgpab")
@@ -172,3 +172,9 @@ metadata/_custom_type_script = "uid://c3aakoo4f3ugx"
 
 [node name="Light" type="OmniLight3D" parent="Lights"]
 light_color = Color(1.353256, 0, 0, 1)
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="Ignite" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/SFX/Fire Swoosh"
+event_guid = "{d5b74531-4785-4913-8419-dda35e1ed73c}"

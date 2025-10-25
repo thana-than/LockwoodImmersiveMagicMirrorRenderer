@@ -8,6 +8,10 @@
 
 config_version=5
 
+[Fmod]
+
+General/banks_path="res://fmod/Build/Desktop/"
+
 [application]
 
 config/name="Godot-HES-SmartMirror"
@@ -20,6 +24,7 @@ config/icon="res://icon.svg"
 
 SequenceManager="*res://scripts/sequence.gd"
 CandleManager="*res://scripts/candle_manager.gd"
+FmodManager="*res://addons/fmod/FmodManager.gd"
 
 [display]
 
@@ -29,6 +34,10 @@ window/size/viewport_height=1920
 [dotnet]
 
 project/assembly_name="Godot-HES-SmartMirror"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
 [xr]
 

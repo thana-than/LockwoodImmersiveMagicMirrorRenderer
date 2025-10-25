@@ -199,6 +199,13 @@ outline_size = 0
 
 [node name="Menu" parent="." instance=ExtResource("6_7mycd")]
 
+[node name="FMOD" type="Node" parent="."]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="FMOD"]
+bank_paths = ["res://fmod/Build/Desktop//Master.strings.bank", "res://fmod/Build/Desktop//Master.bank", "res://fmod/Build/Desktop//Music.bank", "res://fmod/Build/Desktop//VO.bank", "res://fmod/Build/Desktop//UI.bank", "res://fmod/Build/Desktop//SFX.bank"]
+
+[node name="FmodListener2D" type="FmodListener2D" parent="FMOD"]
+
 [connection signal="on_correct" from="Candles/StateHandler" to="Candles/StateHandler/StateAnimations" method="play" binds= ["correct"]]
 [connection signal="on_incorrect" from="Candles/StateHandler" to="Candles/StateHandler/StateAnimations" method="play" binds= ["incorrect"]]
 [connection signal="on_reset" from="Candles/StateHandler" to="Candles/StateHandler/StateAnimations" method="play" binds= ["RESET", 1.0]]
