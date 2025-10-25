@@ -5,7 +5,7 @@ on:
       - "v*"
 
 env:
-  GODOT_VERSION: 4.5
+  GODOT_VERSION: 4.5.1
   EXPORT_NAME: LockwoodMagicMirrorRenderer
 
 permissions:
@@ -16,7 +16,7 @@ jobs:
     name: Windows Export
     runs-on: ubuntu-22.04
     container:
-      image: barichello/godot-ci:4.5
+      image: barichello/godot-ci:4.5.1
 
     steps:
       - name: Checkout
@@ -27,6 +27,9 @@ jobs:
           mkdir -v -p ~/.config
           mv /root/.config/godot ~/.config/godot
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Disable FMOD plugin in CI
+        run: |
+            sed -i '/"res:\/\/addons\/fmod\/plugin.cfg"/d' project.godot
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
