@@ -21,6 +21,8 @@ class_name FireBall
 @export_tool_button("Start Emission", "Callable") var start_action = start
 @export_tool_button("Stop Emission", "Callable") var stop_action = stop
 
+@onready var sfx_ignite : FmodEventEmitter2D = get_node("Audio/Ignite")
+
 var particle_systems : Array[GPUParticles3D] = []
 var lights : Array[Light3D] = []
 
@@ -31,12 +33,16 @@ func start():
 		p.emitting = true
 	for l in lights:
 		l.visible = true
+		
+	sfx_ignite.play(false)
 	
 func stop():
 	for p in particle_systems:
 		p.emitting = false
 	for l in lights:
 		l.visible = false
+	
+	sfx_ignite.stop()
 		
 func remove():
 	stop()

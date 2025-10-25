@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://bkk0x08de4vd5"]
+[gd_scene load_steps=19 format=3 uid="uid://bkk0x08de4vd5"]
 
 [ext_resource type="Script" uid="uid://cdw8lcn3sfq1q" path="res://scripts/warp_particles_controller.gd" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://coac7wnqritpt" path="res://scripts/udp_listener.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://d12a8xmxccs6g" path="res://scripts/candle_player/candle_controller.gd" id="2_7mycd"]
 [ext_resource type="FontFile" uid="uid://bdok648rxtxus" path="res://graphics/fonts/Kings-Regular.ttf" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://byleb48t0k338" path="res://scenes/menu.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://djjr8fxvl8m7l" path="res://global_audio_controller.gd" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://ohna5hvxqo5q" path="res://scripts/candle_player/state_hook.gd" id="7_272bh"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
@@ -198,6 +199,35 @@ font_size = 1000
 outline_size = 0
 
 [node name="Menu" parent="." instance=ExtResource("6_7mycd")]
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("7_5vw27")
+
+[node name="FMOD" type="Node" parent="Audio"]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="Audio/FMOD"]
+bank_paths = ["res://fmod/Build/Desktop//Master.strings.bank", "res://fmod/Build/Desktop//Master.bank", "res://fmod/Build/Desktop//Music.bank", "res://fmod/Build/Desktop//VO.bank", "res://fmod/Build/Desktop//UI.bank", "res://fmod/Build/Desktop//SFX.bank"]
+
+[node name="FmodListener2D" type="FmodListener2D" parent="Audio/FMOD"]
+
+[node name="FireAmbient" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/SFX/Ambient"
+event_guid = "{ecc87cfc-26c6-4243-95f8-77dc9f8236fa}"
+fmod_parameters/SequenceSize/id = 9081918398484902772
+fmod_parameters/SequenceSize = 0
+fmod_parameters/SequenceSize/variant_type = 2
+
+[node name="FireOut" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/SFX/FireOff"
+event_guid = "{fa154402-5a42-4802-9398-689af07ceb29}"
+
+[node name="Correct" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/SFX/Correct"
+event_guid = "{bd7deff7-db8e-4dcd-be0d-fc7de2cfff4f}"
+
+[node name="Incorrect" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/SFX/Incorrect"
+event_guid = "{7305517b-78f5-4f29-8fe5-737b9c9398c4}"
 
 [connection signal="on_correct" from="Candles/StateHandler" to="Candles/StateHandler/StateAnimations" method="play" binds= ["correct"]]
 [connection signal="on_incorrect" from="Candles/StateHandler" to="Candles/StateHandler/StateAnimations" method="play" binds= ["incorrect"]]

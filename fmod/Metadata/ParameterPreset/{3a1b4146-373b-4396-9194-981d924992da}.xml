@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{3a1b4146-373b-4396-9194-981d924992da}">
+		<property name="name">
+			<value>SequenceSize</value>
+		</property>
+		<relationship name="folder">
+			<destination>{974ba3f7-c656-4298-a37e-a4bfb7ebe5c6}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{6bac5205-b8cb-44fb-ae27-42bbb3850f1c}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{6bac5205-b8cb-44fb-ae27-42bbb3850f1c}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>4</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

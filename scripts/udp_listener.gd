@@ -2,6 +2,7 @@ extends Node
 class_name CandleClient
 
 @export var port := 5005
+@export var print_log := false
 
 var udp := PacketPeerUDP.new()
 
@@ -37,5 +38,5 @@ func _process(_delta):
 				order.append(int(id))
 			SequenceManager.order = order
 			# TODO record candle state (detection, bounds) somewhere that can be collected (maybe the order iteself?)
-			
-			_log_data(data)
+			if print_log:
+				_log_data(data)
